@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script
+            src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="./estilo.css" />
+
+    <script src="./automata.js"></script>
+ 
+    <script>
+        $(function() {
+            //Paginacion
+
+            var clicked = false;
+
+            $(".masthead-nav li a").click(function (event) {
+
+                if(!clicked) {
+
+                    clicked = true;
+                    switch ($(event.target).attr("class")) {
+
+                        case "page2":
+                            if ($(".page3").parent().hasClass("active")) {
+                                $(".e3").fadeOut(450, function () {
+                                    $(".e2").fadeIn(450, function () {
+                                        $(".masthead-nav li").removeClass("active");
+                                        $(".page2").parent().addClass("active");
+                                        clicked = false;
+                                    });
+                                });
+
+                            }
+                            if ($(".pagex").parent().hasClass("active")) {
+                                $(".extra").fadeOut(450, function () {
+                                    $(".e2").fadeIn(450, function () {
+                                        $(".masthead-nav li").removeClass("active");
+                                        $(".page2").parent().addClass("active");
+                                        clicked = false;
+                                    });
+                                });
+
+                            }
+                            break;
+
+                        case "page3":
+                            if ($(".page2").parent().hasClass("active")) {
+                                $(".e2").fadeOut(450, function () {
+                                    $(".e3").fadeIn(450, function () {
+                                        $(".masthead-nav li").removeClass("active");
+                                        $(".page3").parent().addClass("active");
+                                        clicked = false;
+                                    });
+                                });
+
+                            }
+                            if ($(".pagex").parent().hasClass("active")) {
+                                $(".extra").fadeOut(450, function () {
+                                    $(".e3").fadeIn(450, function () {
+                                        $(".masthead-nav li").removeClass("active");
+                                        $(".page3").parent().addClass("active");
+                                        clicked = false;
+                                    });
+                                });
+                            }
+                            break;
+
+                        case "pagex":
+                            if ($(".page2").parent().hasClass("active")) {
+                                $(".e2").fadeOut(450, function () {
+                                    $(".extra").fadeIn(450, function () {
+                                        $(".masthead-nav li").removeClass("active");
+                                        $(".pagex").parent().addClass("active");
+                                        clicked = false;
+                                    });
+                                });
+                            }
+                            if ($(".page3").parent().hasClass("active")) {
+                                $(".e3").fadeOut(450, function () {
+                                    $(".extra").fadeIn(450, function () {
+                                        $(".masthead-nav li").removeClass("active");
+                                        $(".pagex").parent().addClass("active");
+                                        clicked = false;
+                                    });
+                                });
+                            }
+                            break;
+                    }
+                }
+            });
+        });
+
+
+    </script>
+
+
+    <style>
+        .circular{
+            font-size: 30px;
+            background: #ffffff;
+            padding: 40px;
+            color: #333333;
+            border-radius: 50%;
+
+            line-height: 3.5em;
+        }
+
+        .circular:hover{
+            color: #333333;
+        }
+
+        .circular-ok{
+            background: #5FBA7D;
+            color: #ffffff;
+        }
+
+        .circular-ok:hover{
+            color: #ffffff;
+        }
+
+        .circular-error{
+            background: #ff4d46;
+            color: #ffffff;
+        }
+
+        .circular-error:hover{
+            color: #ffffff;
+        }
+
+        .e3, .extra{
+            display: none;
+        }
+
+
+    </style>
+    <title>Matemaricas Discretas 2107 - 0</title>
+</head>
+<body>
+
+
+
+<div class="site-wrapper">
+
+    <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand">Matematica Discreta</h3>
+                    <nav>
+                        <ul class="nav masthead-nav">
+                            <li class="active"><a href="#" class="page2">E2</a></li>
+                            <li><a href="#"  class="page3">E3</a></li>
+                            <li><a href="#"  class="pagex">Extra</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="inner cover e2">
+                <h1 class="cover-heading">
+                    E2
+                </h1>
+                <p class="lead">
+                    Realizar un automata que detecte palabras que terminen en "aabab" y haga su algoritmo
+                </p>
+                <p class="lead">
+                    <input type="text" class="form-control" placeholder="*aabab" style="width: 30%; margin: 0 auto" id="texto2"/>
+                </p>
+                <p>
+                    <a class="circular" id="check2"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+                </p>
+            </div>
+
+            <div class="inner cover e3">
+                <h1 class="cover-heading">
+                    E3
+                </h1>
+                <p class="lead">
+                    Realizar un automata que detecte palabras que terminen en "ababa" y haga su algoritmo
+                </p>
+                <p class="lead">
+                    <input type="text" class="form-control" placeholder="*aabab" style="width: 30%; margin: 0 auto" id="texto3"/>
+                </p>
+                <p>
+                    <a class="circular" id="check3"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+                </p>
+            </div>
+
+            <div class="inner cover extra">
+                <h1 class="cover-heading">
+                    Extra
+                </h1>
+                <p class="lead">
+                    Ingresa el regex y el texto que validaria el regex
+                </p>
+                <p class="lead">
+                    <input type="text" class="form-control" placeholder="Expresion Regular" value="" style="width: 30%; margin: 0 auto" id="textoregex"/>
+                </p>
+                <p class="lead">
+                    <input type="text" class="form-control" placeholder="*aabab" style="width: 30%; margin: 0 auto" id="textoextra"/>
+                </p>
+                <p>
+                    <a class="circular" id="checkex"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+                </p>
+            </div>
+
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>Cover template based in <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/itsudatte">@itsudatte</a>.</p>
+                    <p>Powered by <a href="http://tineo.mobi">Cesar Gutierrez Tineo</a> in <a href="https://github.com/tineo">Github &#10084;</a>.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+</body>
+</html>
